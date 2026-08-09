@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:mp3cd/src/converters/uid0018.dart';
-import 'package:mp3cd/src/util/util.dart';
 
 /// MP3c.
 class Mp3cd {
@@ -35,9 +34,7 @@ class Mp3cd {
       final inputFile = File(input);
       final outputFile = File(output);
 
-      // await _convertFile(inputFile, outputFile);
-      final fps = await getAverageFps(inputFile);
-      print(fps);
+      await _convertFile(inputFile, outputFile);
     } else if (Directory(input).existsSync()) {
       final inputDirectory = Directory(input);
       final outputDirectory = Directory(output);

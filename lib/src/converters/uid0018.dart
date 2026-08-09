@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:mp3cd/src/model/converter.dart';
+import 'package:mp3cd/src/util/get_average_fps.dart';
 import 'package:mp3cd/src/util/mp4box.dart';
-import 'package:mp3cd/src/util/util.dart';
 
 /// Converter for UID0018.
 class Uid0018 extends Converter {
