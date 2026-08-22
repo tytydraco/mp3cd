@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:mp3cd/src/util/arg_builder.dart';
+import 'package:mp3cd/src/util/binaries.dart' as b;
 
 /// Video extension functions on [File].
 extension VideoExtensionsFile on File {
@@ -10,7 +11,7 @@ extension VideoExtensionsFile on File {
       ..pair('-inter', 1)
       ..pair('-tmp', parent.path)
       ..single(path);
-    await Process.run('MP4Box', argBuilder.args);
+    await b.mp4Box(argBuilder.args);
   }
 
   /// Returns true if there is an audio track.
@@ -22,7 +23,7 @@ extension VideoExtensionsFile on File {
       ..pair('-of', 'csv=p=0')
       ..single(path);
 
-    final result = await Process.run('ffprobe', argBuilder.args);
+    final result = await b.ffprobe(argBuilder.args);
 
     if (result.exitCode != 0) return false;
     return result.stdout.toString().trim().isNotEmpty;
@@ -36,7 +37,7 @@ extension VideoExtensionsFile on File {
       ..pair('-show_entries', 'stream=avg_frame_rate')
       ..pair('-of', 'csv=p=0')
       ..single(path);
-    final result = await Process.run('ffprobe', argBuilder.args);
+    final result = await b.ffprobe(argBuilder.args);
 
     if (result.exitCode != 0) return null;
 

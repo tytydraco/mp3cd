@@ -1,26 +1,25 @@
 import 'dart:io';
 
 /// Run a process.
-Future<ProcessResult> run(String executable, List<String> args) async {
-  return Process.run(executable, args);
-}
+Future<ProcessResult> run(String executable, List<String> args) =>
+    Process.run(executable, args);
 
 /// FFmpeg.
-Future<void> ffmpeg(List<String> args) async {
-  await run('ffmpeg', args);
-}
+Future<ProcessResult> ffmpeg(List<String> args) => run('ffmpeg', args);
+
+/// FFprobe.
+Future<ProcessResult> ffprobe(List<String> args) => run('ffprobe', args);
 
 /// FFmpeg with YP3 x264 patch.
-Future<void> ffmpegYp3Patch(List<String> args) async {
-  await run('ffmpeg-yp3-patch', args);
-}
+Future<ProcessResult> ffmpegYp3Patch(List<String> args) =>
+    run('ffmpeg-yp3-patch', args);
 
 /// Image Magick convert.
-Future<void> imageMagick(List<String> args) async {
-  await run('convert', args);
-}
+Future<ProcessResult> imageMagick(List<String> args) => run('convert', args);
 
 /// Calibre ebook-convert.
-Future<void> ebookConvert(List<String> args) async {
-  await run('ebook-convert', args);
-}
+Future<ProcessResult> ebookConvert(List<String> args) =>
+    run('ebook-convert', args);
+
+/// MP4Box.
+Future<ProcessResult> mp4Box(List<String> args) => run('MP4Box', args);
