@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:mp3cd/src/converters/uid0019.dart';
+import 'package:mp3cd/src/profiles/uid0001.dart';
 
 /// MP3c.
 class Mp3cd {
@@ -25,7 +25,7 @@ class Mp3cd {
   final List<String> converters;
 
   Future<void> _convertFile(File inputFile, File outputFile) async {
-    await Uid0019(inputFile: inputFile, outputFile: outputFile).convert();
+    await Uid0001(inputFile: inputFile, outputFile: outputFile).video();
   }
 
   /// Begin conversions.
