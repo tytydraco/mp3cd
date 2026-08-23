@@ -76,9 +76,8 @@ Mp3cd _parseMp3cd(List<String> arguments) {
 Future<void> main(List<String> arguments) async {
   try {
     _mp3cd = _parseMp3cd(arguments);
-  } on Exception catch (e) {
+  } on Object catch (e) {
     stderr
-      ..writeln('Failed to parse arguments.')
       ..writeln(e)
       ..writeln(_argParser.usage);
     exit(1);
@@ -86,7 +85,7 @@ Future<void> main(List<String> arguments) async {
 
   try {
     await _mp3cd.convert();
-  } on Exception catch (e) {
+  } on Object catch (e) {
     stderr.writeln(e);
     exit(1);
   }
