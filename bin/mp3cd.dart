@@ -5,6 +5,9 @@ import 'package:mp3cd/mp3cd.dart';
 import 'package:mp3cd/src/model/mode.dart';
 import 'package:mp3cd/src/model/profile.dart';
 
+final ArgParser _argParser = _getArgParser();
+late final Mp3cd _mp3cd;
+
 ArgParser _getArgParser() {
   final argParser = ArgParser();
   argParser
@@ -47,36 +50,44 @@ ArgParser _getArgParser() {
   return argParser;
 }
 
+Mp3cd _parseMp3cd(List<String> arguments) {
+  final results = _argParser.parse(arguments);
+
+  final input = results['input'] as String;
+  final output = results['output'] as String?;
+  final converterNames = results['converters'] as List<String>;
+  final modeName = results['mode'] as String;
+
+  final converters = converterNames
+      .map(
+        (name) => Profile.values.singleWhere((p) => p.name == name),
+      )
+      .toList();
+  final mode = Mode.values.singleWhere((m) => m.name == modeName);
+
+  return Mp3cd(
+    input: File(input),
+    output: (output != null) ? File(output) : null,
+    profiles: converters,
+    mode: mode,
+  );
+}
+
 Future<void> main(List<String> arguments) async {
-  final argParser = _getArgParser();
-  final results = argParser.parse(arguments);
-
   try {
-    final input = results['input'] as String;
-    final output = results['output'] as String?;
-    final converterNames = results['converters'] as List<String>;
-    final modeName = results['mode'] as String;
-
-    final converters = converterNames
-        .map(
-          (name) => Profile.values.singleWhere((p) => p.name == name),
-        )
-        .toList();
-    final mode = Mode.values.singleWhere((m) => m.name == modeName);
-
-    final mp3cd = Mp3cd(
-      input: File(input),
-      output: (output != null) ? File(output) : null,
-      profiles: converters,
-      mode: mode,
-    );
-
-    await mp3cd.convert();
+    _mp3cd = _parseMp3cd(arguments);
   } on Exception catch (e) {
     stderr
       ..writeln('Failed to parse arguments.')
       ..writeln(e)
-      ..writeln(argParser.usage);
+      ..writeln(_argParser.usage);
+    exit(1);
+  }
+
+  try {
+    await _mp3cd.convert();
+  } on Exception catch (e) {
+    stderr.writeln(e);
     exit(1);
   }
 }

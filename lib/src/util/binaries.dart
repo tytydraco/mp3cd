@@ -1,8 +1,37 @@
+import 'dart:convert';
 import 'dart:io';
 
-/// Run a process.
-Future<ProcessResult> run(String executable, List<String> args) =>
-    Process.run(executable, args);
+/// Run a process and return the exit code. Write to [stdout] and [stderr].
+Future<ProcessResult> run(
+  String executable,
+  List<String> args,
+) async {
+  final process = await Process.start(executable, args);
+
+  final stdoutBuffer = StringBuffer();
+  final stderrBuffer = StringBuffer();
+
+  final stdoutFuture = process.stdout.transform(utf8.decoder).listen((data) {
+    stdout.write(data);
+    stdoutBuffer.write(data);
+  }).asFuture<dynamic>();
+
+  final stderrFuture = process.stderr.transform(utf8.decoder).listen((data) {
+    stderr.write(data);
+    stderrBuffer.write(data);
+  }).asFuture<dynamic>();
+
+  final exitCode = await process.exitCode;
+
+  await Future.wait([stdoutFuture, stderrFuture]);
+
+  return ProcessResult(
+    process.pid,
+    exitCode,
+    stdoutBuffer.toString(),
+    stderrBuffer.toString(),
+  );
+}
 
 /// FFmpeg.
 Future<ProcessResult> ffmpeg(List<String> args) => run('ffmpeg', args);
