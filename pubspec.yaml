@@ -1,6 +1,6 @@
 name: mp3cd
 description: Mp3c Dart implementation.
-version: 0.0.1
+version: 1.0.0
 repository: https://github.com/tytydraco/mp3cd
 
 environment:
