@@ -1,6 +1,24 @@
 import 'dart:convert';
 import 'dart:io';
 
+/// Binary path for FFmpeg.
+String binPathFfmpeg = 'ffmpeg';
+
+/// Binary path for FFprobe.
+String binPathFfprobe = 'ffprobe';
+
+/// Binary path for FFmpeg with YP3 x264 patch.
+String binPathFfmpegYp3Patch = 'ffmpeg-yp3-patch';
+
+/// Binary path for Image Magick convert.
+String binPathImageMagick = 'convert';
+
+/// Binary path for ebook-convert.
+String binPathEbookConvert = 'ebook-convert';
+
+/// Binary path for MP4Box.
+String binPathMp4box = 'MP4Box';
+
 /// Run a process and return the exit code. Write to [stdout] and [stderr].
 Future<ProcessResult> run(
   String executable,
@@ -34,21 +52,22 @@ Future<ProcessResult> run(
 }
 
 /// FFmpeg.
-Future<ProcessResult> ffmpeg(List<String> args) => run('ffmpeg', args);
+Future<ProcessResult> ffmpeg(List<String> args) => run(binPathFfmpeg, args);
 
 /// FFprobe.
-Future<ProcessResult> ffprobe(List<String> args) => run('ffprobe', args);
+Future<ProcessResult> ffprobe(List<String> args) => run(binPathFfprobe, args);
 
 /// FFmpeg with YP3 x264 patch.
 Future<ProcessResult> ffmpegYp3Patch(List<String> args) =>
-    run('ffmpeg-yp3-patch', args);
+    run(binPathFfmpegYp3Patch, args);
 
 /// Image Magick convert.
-Future<ProcessResult> imageMagick(List<String> args) => run('convert', args);
+Future<ProcessResult> imageMagick(List<String> args) =>
+    run(binPathImageMagick, args);
 
 /// Calibre ebook-convert.
 Future<ProcessResult> ebookConvert(List<String> args) =>
-    run('ebook-convert', args);
+    run(binPathEbookConvert, args);
 
 /// MP4Box.
-Future<ProcessResult> mp4Box(List<String> args) => run('MP4Box', args);
+Future<ProcessResult> mp4Box(List<String> args) => run(binPathMp4box, args);

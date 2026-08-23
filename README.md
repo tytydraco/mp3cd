@@ -8,6 +8,30 @@ Convert audio, images, text, and videos for specific portable media players. Pro
 reverse-engineered for optimal
 conversion. [List of profiles are available through this spreadsheet](https://github.com/tytydraco/mp3c/blob/main/Generic%20MP3%20Player%20Video%20Specification%20Sheet.xlsx).
 
+# Binary paths
+
+Binaries are assumed to be in your `PATH`, but can be overridden on a library-level. These are the defaults:
+
+```
+/// Binary path for FFmpeg.
+String binPathFfmpeg = 'ffmpeg';
+
+/// Binary path for FFprobe.
+String binPathFfprobe = 'ffprobe';
+
+/// Binary path for FFmpeg with YP3 x264 patch.
+String binPathFfmpegYp3Patch = 'ffmpeg-yp3-patch';
+
+/// Binary path for Image Magick convert.
+String binPathImageMagick = 'convert';
+
+/// Binary path for ebook-convert.
+String binPathEbookConvert = 'ebook-convert';
+
+/// Binary path for MP4Box.
+String binPathMp4box = 'MP4Box';
+```
+
 # YP3
 
 Certain MP3 players using the SmartLink 6806 (SL6806) chipset
