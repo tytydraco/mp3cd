@@ -98,7 +98,7 @@ class Uid0017 extends Converter {
       ..pair('-ac:a', 1)
       ..pair('-ar:a', 16000);
 
-    final passLogDirectory = Directory.systemTemp.createTempSync(
+    final passLogDirectory = await Directory.systemTemp.createTemp(
       basename(targetOutputFile.path),
     );
     final argsPass1 = ArgBuilder()
@@ -117,7 +117,7 @@ class Uid0017 extends Converter {
 
     await ffmpeg(argsPass1.args);
     await ffmpeg(argsPass2.args);
-    passLogDirectory.deleteSync(recursive: true);
+    await passLogDirectory.delete(recursive: true);
     await targetOutputFile.mp4Box();
   }
 }
