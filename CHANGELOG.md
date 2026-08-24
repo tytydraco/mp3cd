@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Improve MJPEG quality
+
 ## 1.0.3
 
 - Swap uid0017 & uid0018 from CQP to ABR due to needing a VBV
