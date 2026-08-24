@@ -78,7 +78,7 @@ class Uid0019 extends Converter {
     const size = '320:240';
     const fpsMax = 25;
     final fps = (await inputFile.getAverageFps() ?? fpsMax)
-        .clamp(0, fpsMax)
+        .clamp(1, fpsMax)
         .nearestLegalAMVFps();
     final blockSize = 22050 ~/ fps;
 

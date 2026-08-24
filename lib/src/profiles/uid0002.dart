@@ -76,7 +76,7 @@ class Uid0002 extends Converter {
 
     const size = '240:288';
     const fpsMax = 25;
-    final fps = (await inputFile.getAverageFps() ?? fpsMax).clamp(0, fpsMax);
+    final fps = (await inputFile.getAverageFps() ?? fpsMax).clamp(1, fpsMax);
 
     if (await inputFile.hasAudio()) {
       argBuilder

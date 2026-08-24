@@ -77,7 +77,7 @@ class Uid0008 extends Converter {
 
     const size = '640:480';
     const fpsMax = 25;
-    final fps = (await inputFile.getAverageFps() ?? fpsMax).clamp(0, fpsMax);
+    final fps = (await inputFile.getAverageFps() ?? fpsMax).clamp(1, fpsMax);
 
     argBuilder
       ..pair('-f', 'mp4')
