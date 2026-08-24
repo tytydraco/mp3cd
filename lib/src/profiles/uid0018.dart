@@ -98,7 +98,9 @@ class Uid0018 extends Converter {
       ..pair('-ac:a', 1)
       ..pair('-ar:a', 16000);
 
-    final passLogDirectory = Directory.systemTemp.createTempSync();
+    final passLogDirectory = Directory.systemTemp.createTempSync(
+      basename(targetOutputFile.path),
+    );
     final argsPass1 = ArgBuilder()
       ..args.addAll(argBuilder.args)
       ..pair('-pass', 1)
