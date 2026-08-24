@@ -1,3 +1,7 @@
+## 1.0.6
+
+- Place pass log files in temp directory
+
 ## 1.0.5
 
 - Switch to mpeg4 encoder to support VBV

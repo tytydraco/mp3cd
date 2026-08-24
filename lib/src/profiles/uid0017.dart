@@ -98,9 +98,11 @@ class Uid0017 extends Converter {
       ..pair('-ac:a', 1)
       ..pair('-ar:a', 16000);
 
+    final passLogDirectory = Directory.systemTemp.createTempSync();
     final argsPass1 = ArgBuilder()
       ..args.addAll(argBuilder.args)
       ..pair('-pass', 1)
+      ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
       ..single('-an:a')
       ..pair('-f', 'null')
       ..single(Platform.isWindows ? 'NUL' : '/dev/null');
@@ -108,10 +110,12 @@ class Uid0017 extends Converter {
     final argsPass2 = ArgBuilder()
       ..args.addAll(argBuilder.args)
       ..pair('-pass', 2)
+      ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
       ..single(targetOutputFile.path);
 
     await ffmpeg(argsPass1.args);
     await ffmpeg(argsPass2.args);
+    passLogDirectory.deleteSync(recursive: true);
     await targetOutputFile.mp4Box();
   }
 }
