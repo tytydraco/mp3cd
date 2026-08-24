@@ -1,3 +1,9 @@
+## 1.0.7
+
+- Ensure minimum FPS is 1, not 0
+- Prefix 2-pass VBR log directory with output file name
+- Make some sync methods async
+
 ## 1.0.6
 
 - Place pass log files in temp directory
