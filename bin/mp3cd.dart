@@ -65,8 +65,14 @@ Mp3cd _parseMp3cd(List<String> arguments) {
       .toList();
   final mode = Mode.values.singleWhere((m) => m.name == modeName);
 
+  final inputFile = File(input);
+  if (!inputFile.existsSync()) {
+    stderr.writeln('Input file not found.');
+    exit(1);
+  }
+
   return Mp3cd(
-    input: File(input),
+    input: inputFile,
     output: (output != null) ? File(output) : null,
     profiles: converters,
     mode: mode,

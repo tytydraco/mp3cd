@@ -1,3 +1,9 @@
+## 1.0.5
+
+- Switch to mpeg4 encoder to support VBV
+- Use 2-pass encode
+- Validate input file exists
+
 ## 1.0.4
 
 - Improve MJPEG quality

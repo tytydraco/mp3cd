@@ -83,7 +83,7 @@ class Uid0017 extends Converter {
       ..pair('-f', 'mp4')
       ..pair('-map', '0:v:0')
       ..pair('-map', '0:a:0?')
-      ..pair('-c:v', 'libxvid')
+      ..pair('-c:v', 'mpeg4')
       ..pair(
         '-filter:v',
         'transpose=cclock:passthrough=landscape,scale=$size:force_original_aspect_ratio=increase:flags=area:out_range=tv,crop=$size',
@@ -96,10 +96,22 @@ class Uid0017 extends Converter {
       ..pair('-r:v', fps)
       ..pair('-c:a', 'aac')
       ..pair('-ac:a', 1)
-      ..pair('-ar:a', 16000)
+      ..pair('-ar:a', 16000);
+
+    final argsPass1 = ArgBuilder()
+      ..args.addAll(argBuilder.args)
+      ..pair('-pass', 1)
+      ..single('-an:a')
+      ..pair('-f', 'null')
+      ..single(Platform.isWindows ? 'NUL' : '/dev/null');
+
+    final argsPass2 = ArgBuilder()
+      ..args.addAll(argBuilder.args)
+      ..pair('-pass', 2)
       ..single(targetOutputFile.path);
 
-    await ffmpeg(argBuilder.args);
+    await ffmpeg(argsPass1.args);
+    await ffmpeg(argsPass2.args);
     await targetOutputFile.mp4Box();
   }
 }
