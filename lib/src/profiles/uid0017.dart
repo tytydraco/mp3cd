@@ -103,7 +103,7 @@ class Uid0017 extends Converter {
       ..args.addAll(argBuilder.args)
       ..pair('-pass', 1)
       ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
-      ..single('-an:a')
+      ..single('-an')
       ..pair('-f', 'null')
       ..single(Platform.isWindows ? 'NUL' : '/dev/null');
 
