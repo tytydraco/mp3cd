@@ -12,6 +12,9 @@ class ArgBuilder {
     arg2.toString(),
   ]);
 
+  /// Returns a copy of the original.
+  ArgBuilder clone() => ArgBuilder()..args.addAll(args);
+
   @override
   String toString() => args.join(' ');
 }

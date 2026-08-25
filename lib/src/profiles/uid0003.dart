@@ -111,16 +111,14 @@ class Uid0003 extends Converter {
     final passLogDirectory = await Directory.systemTemp.createTemp(
       basename(targetOutputFile.path),
     );
-    final argsPass1 = ArgBuilder()
-      ..args.addAll(argBuilder.args)
+    final argsPass1 = argBuilder.clone()
       ..pair('-pass', 1)
       ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
       ..single('-an')
       ..pair('-f', 'null')
       ..single(Platform.isWindows ? 'NUL' : '/dev/null');
 
-    final argsPass2 = ArgBuilder()
-      ..args.addAll(argBuilder.args)
+    final argsPass2 = argBuilder.clone()
       ..pair('-pass', 2)
       ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
       ..single(targetOutputFile.path);
