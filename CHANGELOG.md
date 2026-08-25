@@ -1,3 +1,7 @@
+## 1.0.9
+
+- Reduce quality for SL6806 128x160
+
 ## 1.0.8
 
 - Add helper method for FFmpeg 2-pass
