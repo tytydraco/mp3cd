@@ -106,9 +106,27 @@ class Uid0007 extends Converter {
       ..pair('-r:v', fps)
       ..pair('-b:v', '600k')
       ..pair('-c:a', 'pcm_s16le')
-      ..pair('-ac:a', 2)
+      ..pair('-ac:a', 2);
+
+    final passLogDirectory = await Directory.systemTemp.createTemp(
+      basename(targetOutputFile.path),
+    );
+    final argsPass1 = ArgBuilder()
+      ..args.addAll(argBuilder.args)
+      ..pair('-pass', 1)
+      ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
+      ..single('-an')
+      ..pair('-f', 'null')
+      ..single(Platform.isWindows ? 'NUL' : '/dev/null');
+
+    final argsPass2 = ArgBuilder()
+      ..args.addAll(argBuilder.args)
+      ..pair('-pass', 2)
+      ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
       ..single(targetOutputFile.path);
 
-    await ffmpeg(argBuilder.args);
+    await ffmpeg(argsPass1.args);
+    await ffmpeg(argsPass2.args);
+    await passLogDirectory.delete(recursive: true);
   }
 }
