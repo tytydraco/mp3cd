@@ -1,3 +1,10 @@
+## 1.0.8
+
+- Add helper method for FFmpeg 2-pass
+- Use non-prefixed temp directories for 2-pass
+- Adjust bitrate for perceptual consistency for MPEG4 profiles
+- Switch from CQP to 2-pass VBR for MJPEG
+
 ## 1.0.7
 
 - Ensure minimum FPS is 1, not 0
