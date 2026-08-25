@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:mp3cd/src/util/arg_builder.dart';
 import 'package:mp3cd/src/util/binaries.dart' as b;
+import 'package:path/path.dart';
 
 /// Video extension functions on [File].
 extension VideoExtensionsFile on File {
@@ -89,5 +90,26 @@ extension VideoExtensionsNum on num {
       (value) => value >= this,
       orElse: () => legalAmvFps.last,
     );
+  }
+}
+
+/// FFmpeg 2-pass helper extension functions on [ArgBuilder].
+extension Ffmpeg2PassArgBuilder on ArgBuilder {
+  /// Return an [ArgBuilder] set up for pass 1.
+  ArgBuilder pass1(Directory passLogDirectory) {
+    return clone()
+      ..pair('-pass', 1)
+      ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
+      ..single('-an')
+      ..pair('-f', 'null')
+      ..single(Platform.isWindows ? 'NUL' : '/dev/null');
+  }
+
+  /// Return an [ArgBuilder] set up for pass 2.
+  ArgBuilder pass2(Directory passLogDirectory, File outputFile) {
+    return clone()
+      ..pair('-pass', 2)
+      ..pair('-passlogfile', join(passLogDirectory.path, 'log'))
+      ..single(outputFile.path);
   }
 }
