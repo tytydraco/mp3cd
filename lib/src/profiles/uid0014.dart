@@ -104,7 +104,7 @@ class Uid0014 extends Converter {
       ..pair('-sws_flags', 'accurate_rnd+full_chroma_int+full_chroma_inp')
       ..pair('-pix_fmt:v', 'yuvj420p')
       ..pair('-r:v', fps)
-      ..pair('-qp:v', 29)
+      ..pair('-qp:v', 32)
       ..pair('-g:v', 6)
       ..pair('-sc_threshold:v', 0)
       ..pair('-refs:v', 1)
