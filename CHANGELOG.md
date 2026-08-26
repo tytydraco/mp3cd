@@ -1,3 +1,7 @@
+## 1.0.10
+
+- Revert reduced bitrate for MPEG4 320x240
+
 ## 1.0.9
 
 - Reduce quality for SL6806 128x160
