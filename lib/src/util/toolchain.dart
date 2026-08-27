@@ -5,13 +5,31 @@ import 'dart:io';
 class Toolchain {
   /// Creates a new [Toolchain].
   const Toolchain({
-    this.binPathFfmpeg = 'ffmpeg',
-    this.binPathFfprobe = 'ffprobe',
-    this.binPathFfmpegYp3Patch = 'ffmpeg-yp3-patch',
-    this.binPathImageMagick = 'convert',
-    this.binPathEbookConvert = 'ebook-convert',
-    this.binPathMp4box = 'MP4Box',
+    this.binPathFfmpeg = defaultBinPathFfmpeg,
+    this.binPathFfprobe = defaultBinPathFfprobe,
+    this.binPathFfmpegYp3Patch = defaultBinPathFfmpegYp3Patch,
+    this.binPathImageMagick = defaultBinPathImageMagick,
+    this.binPathEbookConvert = defaultBinPathEbookConvert,
+    this.binPathMp4box = defaultBinPathMp4box,
   });
+
+  /// Default binary path for FFmpeg.
+  static const defaultBinPathFfmpeg = 'ffmpeg';
+
+  /// Default binary path for FFprobe.
+  static const defaultBinPathFfprobe = 'ffprobe';
+
+  /// Default binary path for FFmpeg with YP3 x264 patch.
+  static const defaultBinPathFfmpegYp3Patch = 'ffmpeg-yp3-patch';
+
+  /// Default binary path for Image Magick convert.
+  static const defaultBinPathImageMagick = 'convert';
+
+  /// Default binary path for ebook-convert.
+  static const defaultBinPathEbookConvert = 'ebook-convert';
+
+  /// Default binary path for MP4Box.
+  static const defaultBinPathMp4box = 'MP4Box';
 
   /// Binary path for FFmpeg.
   final String binPathFfmpeg;
