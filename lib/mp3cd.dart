@@ -20,6 +20,29 @@ import 'package:mp3cd/src/profiles/uid0017.dart';
 import 'package:mp3cd/src/profiles/uid0018.dart';
 import 'package:mp3cd/src/profiles/uid0019.dart';
 
+export 'package:mp3cd/src/model/converter.dart';
+export 'package:mp3cd/src/model/mode.dart';
+export 'package:mp3cd/src/model/profile.dart';
+export 'package:mp3cd/src/profiles/uid0001.dart';
+export 'package:mp3cd/src/profiles/uid0002.dart';
+export 'package:mp3cd/src/profiles/uid0003.dart';
+export 'package:mp3cd/src/profiles/uid0004.dart';
+export 'package:mp3cd/src/profiles/uid0005.dart';
+export 'package:mp3cd/src/profiles/uid0007.dart';
+export 'package:mp3cd/src/profiles/uid0008.dart';
+export 'package:mp3cd/src/profiles/uid0009.dart';
+export 'package:mp3cd/src/profiles/uid0010.dart';
+export 'package:mp3cd/src/profiles/uid0011.dart';
+export 'package:mp3cd/src/profiles/uid0013.dart';
+export 'package:mp3cd/src/profiles/uid0014.dart';
+export 'package:mp3cd/src/profiles/uid0016.dart';
+export 'package:mp3cd/src/profiles/uid0017.dart';
+export 'package:mp3cd/src/profiles/uid0018.dart';
+export 'package:mp3cd/src/profiles/uid0019.dart';
+export 'package:mp3cd/src/util/arg_builder.dart';
+export 'package:mp3cd/src/util/binaries.dart';
+export 'package:mp3cd/src/util/video_extensions.dart';
+
 /// MP3c.
 class Mp3cd {
   /// Creates a new [Mp3cd].
