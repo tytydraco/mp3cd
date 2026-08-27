@@ -1,3 +1,9 @@
+## 1.0.11
+
+- Export library files
+- Introduce toolchain configuration
+- Allow CLI to specify toolchain configuration
+
 ## 1.0.10
 
 - Revert reduced bitrate for MPEG4 320x240
