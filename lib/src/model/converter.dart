@@ -1,11 +1,14 @@
 import 'dart:io';
 
+import 'package:mp3cd/src/util/toolchain.dart';
+
 /// Converter profile base.
 abstract class Converter {
   /// Creates a new [Converter].
   Converter({
     required this.inputFile,
     this.outputFile,
+    this.toolchain = const Toolchain(),
   });
 
   /// The input file.
@@ -13,6 +16,9 @@ abstract class Converter {
 
   /// The output file.
   final File? outputFile;
+
+  /// Toolchain for required binaries.
+  final Toolchain toolchain;
 
   /// The converter ID.
   abstract final String id;

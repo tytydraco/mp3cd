@@ -1,22 +1,22 @@
 import 'dart:io';
 
 import 'package:mp3cd/src/util/arg_builder.dart';
-import 'package:mp3cd/src/util/binaries.dart' as b;
+import 'package:mp3cd/src/util/toolchain.dart';
 import 'package:path/path.dart';
 
 /// Video extension functions on [File].
 extension VideoExtensionsFile on File {
   /// Perform in-place MP4Box interlacing.
-  Future<void> mp4Box() async {
+  Future<void> mp4Box(Toolchain toolchain) async {
     final argBuilder = ArgBuilder()
       ..pair('-inter', 1)
       ..pair('-tmp', parent.path)
       ..single(path);
-    await b.mp4Box(argBuilder.args);
+    await toolchain.mp4Box(argBuilder.args);
   }
 
   /// Returns true if there is an audio track.
-  Future<bool> hasAudio() async {
+  Future<bool> hasAudio(Toolchain toolchain) async {
     final argBuilder = ArgBuilder()
       ..pair('-v', 'error')
       ..pair('-select_streams', 'a:0')
@@ -24,21 +24,21 @@ extension VideoExtensionsFile on File {
       ..pair('-of', 'csv=p=0')
       ..single(path);
 
-    final result = await b.ffprobe(argBuilder.args);
+    final result = await toolchain.ffprobe(argBuilder.args);
 
     if (result.exitCode != 0) return false;
     return result.stdout.toString().trim().isNotEmpty;
   }
 
   /// Return the average FPS as a double.
-  Future<double?> getAverageFps() async {
+  Future<double?> getAverageFps(Toolchain toolchain) async {
     final argBuilder = ArgBuilder()
       ..pair('-v', 'error')
       ..pair('-select_streams', 'v:0')
       ..pair('-show_entries', 'stream=avg_frame_rate')
       ..pair('-of', 'csv=p=0')
       ..single(path);
-    final result = await b.ffprobe(argBuilder.args);
+    final result = await toolchain.ffprobe(argBuilder.args);
 
     if (result.exitCode != 0) return null;
 

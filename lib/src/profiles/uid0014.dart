@@ -2,14 +2,17 @@ import 'dart:io';
 
 import 'package:mp3cd/src/model/converter.dart';
 import 'package:mp3cd/src/util/arg_builder.dart';
-import 'package:mp3cd/src/util/binaries.dart';
 import 'package:mp3cd/src/util/video_extensions.dart';
 import 'package:path/path.dart';
 
 /// [Uid0014].
 class Uid0014 extends Converter {
   /// Creates a new [Uid0014].
-  Uid0014({required super.inputFile, required super.outputFile});
+  Uid0014({
+    required super.inputFile,
+    super.outputFile,
+    super.toolchain,
+  });
 
   @override
   String get id => 'uid0014';
@@ -30,7 +33,7 @@ class Uid0014 extends Converter {
       ..pair('-q:a', 8)
       ..single(targetOutputFile.path);
 
-    await ffmpeg(argBuilder.args);
+    await toolchain.ffmpeg(argBuilder.args);
   }
 
   @override
@@ -52,7 +55,7 @@ class Uid0014 extends Converter {
       ..pair('-extent', size)
       ..single(targetOutputFile.path);
 
-    await imageMagick(argBuilder.args);
+    await toolchain.imageMagick(argBuilder.args);
   }
 
   @override
@@ -61,7 +64,7 @@ class Uid0014 extends Converter {
         ? outputFile!
         : File('${withoutExtension(inputFile.path)}.txt');
 
-    await ebookConvert([inputFile.path, targetOutputFile.path]);
+    await toolchain.ebookConvert([inputFile.path, targetOutputFile.path]);
   }
 
   @override
@@ -77,9 +80,12 @@ class Uid0014 extends Converter {
 
     const size = '128:160';
     const fpsMax = 25;
-    final fps = (await inputFile.getAverageFps() ?? fpsMax).clamp(1, fpsMax);
+    final fps = (await inputFile.getAverageFps(toolchain) ?? fpsMax).clamp(
+      1,
+      fpsMax,
+    );
 
-    if (await inputFile.hasAudio()) {
+    if (await inputFile.hasAudio(toolchain)) {
       argBuilder
         ..pair('-map', '0:v:0')
         ..pair('-map', '0:a:0');
@@ -113,6 +119,6 @@ class Uid0014 extends Converter {
       ..pair('-ar:a', 16000)
       ..single(targetOutputFile.path);
 
-    await ffmpegYp3Patch(argBuilder.args);
+    await toolchain.ffmpegYp3Patch(argBuilder.args);
   }
 }
