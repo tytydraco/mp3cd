@@ -90,6 +90,7 @@ class Uid0018 extends Converter {
       ..pair('-map', '0:v:0')
       ..pair('-map', '0:a:0?')
       ..pair('-c:v', 'mpeg4')
+      ..pair('-mpv_flags', '+strict_gop')
       ..pair(
         '-filter:v',
         'transpose=cclock:passthrough=landscape,scale=$size:force_original_aspect_ratio=increase:flags=area:out_range=tv,crop=$size',
