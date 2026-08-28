@@ -1,3 +1,7 @@
+## 1.0.12
+
+- Fix MPEG4 dense I-frames by forcing strict GOP
+
 ## 1.0.11
 
 - Export library files
