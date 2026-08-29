@@ -1,3 +1,7 @@
+## 1.0.14
+
+- Remove VBV for MPEG4 for now
+
 ## 1.0.13
 
 - Benchmark and properly solidify MPEG4 VBV
