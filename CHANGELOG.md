@@ -1,3 +1,7 @@
+## 1.0.13
+
+- Benchmark and properly solidify MPEG4 VBV
+
 ## 1.0.12
 
 - Fix MPEG4 dense I-frames by forcing strict GOP
