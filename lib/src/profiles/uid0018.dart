@@ -97,6 +97,7 @@ class Uid0018 extends Converter {
       ..pair('-sws_flags', 'accurate_rnd+full_chroma_int+full_chroma_inp')
       ..pair('-pix_fmt:v', 'yuv420p')
       ..pair('-b:v', '500k')
+      ..pair('-g:v', fps)
       ..pair('-r:v', fps)
       ..pair('-c:a', 'aac')
       ..pair('-ac:a', 1)
