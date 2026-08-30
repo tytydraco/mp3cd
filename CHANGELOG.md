@@ -1,3 +1,7 @@
+## 1.0.5
+
+- MPEG4 GOP of 1s for bitrate stability
+
 ## 1.0.14
 
 - Remove VBV for MPEG4 for now
