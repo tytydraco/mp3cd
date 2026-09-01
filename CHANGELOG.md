@@ -1,4 +1,8 @@
-## 1.0.5
+## 1.0.16
+
+- Reduce excessive bitrate for MPEG4
+
+## 1.0.15
 
 - MPEG4 GOP of 1s for bitrate stability
 
