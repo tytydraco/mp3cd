@@ -1,3 +1,7 @@
+## 1.0.17
+
+- Use duration-based GOP for SL6806
+
 ## 1.0.16
 
 - Reduce excessive bitrate for MPEG4
