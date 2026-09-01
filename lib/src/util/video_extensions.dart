@@ -91,6 +91,12 @@ extension VideoExtensionsNum on num {
       orElse: () => legalAmvFps.last,
     );
   }
+
+  /// Returns the GOP length based on duration.
+  int temporalGop(num seconds) {
+    final duration = (this * seconds).round();
+    return duration >= 1 ? duration : 1;
+  }
 }
 
 /// FFmpeg 2-pass helper extension functions on [ArgBuilder].

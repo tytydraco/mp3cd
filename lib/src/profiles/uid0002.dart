@@ -83,6 +83,7 @@ class Uid0002 extends Converter {
       1,
       fpsMax,
     );
+    final gop = fps.temporalGop(0.25);
 
     if (await inputFile.hasAudio(toolchain)) {
       argBuilder
@@ -110,7 +111,7 @@ class Uid0002 extends Converter {
       ..pair('-pix_fmt:v', 'yuvj420p')
       ..pair('-r:v', fps)
       ..pair('-qp:v', 35)
-      ..pair('-g:v', 6)
+      ..pair('-g:v', gop)
       ..pair('-sc_threshold:v', 0)
       ..pair('-refs:v', 1)
       ..pair('-c:a', 'pcm_s16le')
