@@ -1,3 +1,8 @@
+## 1.0.18
+
+- Use duration-based GOP for MPEG4
+- Use 4-second GOP for MPEG4 to reduce quality pumping
+
 ## 1.0.17
 
 - Use duration-based GOP for SL6806
