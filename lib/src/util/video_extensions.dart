@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:mp3cd/src/util/arg_builder.dart';
 import 'package:mp3cd/src/util/toolchain.dart';
@@ -24,10 +25,12 @@ extension VideoExtensionsFile on File {
       ..pair('-of', 'csv=p=0')
       ..single(path);
 
-    final result = await toolchain.ffprobe(argBuilder.args);
-
-    if (result.exitCode != 0) return false;
-    return result.stdout.toString().trim().isNotEmpty;
+    try {
+      final result = await toolchain.ffprobe(argBuilder.args);
+      return result.stdout.toString().trim().isNotEmpty;
+    } on ProcessException {
+      return false;
+    }
   }
 
   /// Return the average FPS as a double.
@@ -38,19 +41,20 @@ extension VideoExtensionsFile on File {
       ..pair('-show_entries', 'stream=avg_frame_rate')
       ..pair('-of', 'csv=p=0')
       ..single(path);
-    final result = await toolchain.ffprobe(argBuilder.args);
 
-    if (result.exitCode != 0) return null;
+    try {
+      final result = await toolchain.ffprobe(argBuilder.args);
+      final output = result.stdout.toString();
+      final parts = output.split('/');
+      if (parts.length == 1) return double.parse(output);
 
-    final output = result.stdout.toString();
+      final numerator = double.parse(parts[0]);
+      final denominator = double.parse(parts[1]);
 
-    final parts = output.split('/');
-    if (parts.length == 1) return double.parse(output);
-
-    final numerator = double.parse(parts[0]);
-    final denominator = double.parse(parts[1]);
-
-    return numerator / denominator;
+      return numerator / denominator;
+    } on ProcessException {
+      return null;
+    }
   }
 }
 
@@ -95,7 +99,7 @@ extension VideoExtensionsNum on num {
   /// Returns the GOP length based on duration.
   int temporalGop(num seconds) {
     final duration = (this * seconds).round();
-    return duration >= 1 ? duration : 1;
+    return max(1, duration);
   }
 }
 

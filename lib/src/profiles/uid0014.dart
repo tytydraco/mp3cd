@@ -19,9 +19,8 @@ class Uid0014 extends Converter {
 
   @override
   Future<void> audio() async {
-    final targetOutputFile = (outputFile != null)
-        ? outputFile!
-        : File('${withoutExtension(inputFile.path)}.mp3');
+    final targetOutputFile =
+        outputFile ?? File('${withoutExtension(inputFile.path)}.mp3');
 
     final argBuilder = ArgBuilder()
       ..single('-nostdin')
@@ -38,9 +37,8 @@ class Uid0014 extends Converter {
 
   @override
   Future<void> image() async {
-    final targetOutputFile = (outputFile != null)
-        ? outputFile!
-        : File('${withoutExtension(inputFile.path)}.$id.jpg');
+    final targetOutputFile =
+        outputFile ?? File('${withoutExtension(inputFile.path)}.$id.jpg');
 
     const size = '128x160';
     final argBuilder = ArgBuilder()
@@ -60,18 +58,16 @@ class Uid0014 extends Converter {
 
   @override
   Future<void> text() async {
-    final targetOutputFile = (outputFile != null)
-        ? outputFile!
-        : File('${withoutExtension(inputFile.path)}.txt');
+    final targetOutputFile =
+        outputFile ?? File('${withoutExtension(inputFile.path)}.txt');
 
     await toolchain.ebookConvert([inputFile.path, targetOutputFile.path]);
   }
 
   @override
   Future<void> video() async {
-    final targetOutputFile = (outputFile != null)
-        ? outputFile!
-        : File('${withoutExtension(inputFile.path)}.$id.avi');
+    final targetOutputFile =
+        outputFile ?? File('${withoutExtension(inputFile.path)}.$id.avi');
 
     final argBuilder = ArgBuilder()
       ..single('-nostdin')

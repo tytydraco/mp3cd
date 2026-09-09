@@ -71,104 +71,88 @@ class Mp3cd {
   final Toolchain toolchain;
 
   Converter _makeConverter(Profile profile) {
-    switch (profile) {
-      case Profile.uid0001:
-        return Uid0001(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0002:
-        return Uid0002(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0003:
-        return Uid0003(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0004:
-        return Uid0004(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0005:
-        return Uid0005(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0007:
-        return Uid0007(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0008:
-        return Uid0008(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0009:
-        return Uid0009(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0010:
-        return Uid0010(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0011:
-        return Uid0011(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0013:
-        return Uid0013(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0014:
-        return Uid0014(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0016:
-        return Uid0016(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0017:
-        return Uid0017(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0018:
-        return Uid0018(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-      case Profile.uid0019:
-        return Uid0019(
-          inputFile: input,
-          outputFile: output,
-          toolchain: toolchain,
-        );
-    }
+    return switch (profile) {
+      Profile.uid0001 => Uid0001(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0002 => Uid0002(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0003 => Uid0003(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0004 => Uid0004(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0005 => Uid0005(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0007 => Uid0007(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0008 => Uid0008(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0009 => Uid0009(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0010 => Uid0010(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0011 => Uid0011(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0013 => Uid0013(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0014 => Uid0014(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0016 => Uid0016(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0017 => Uid0017(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0018 => Uid0018(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+      Profile.uid0019 => Uid0019(
+        inputFile: input,
+        outputFile: output,
+        toolchain: toolchain,
+      ),
+    };
   }
 
   /// Begin conversions.

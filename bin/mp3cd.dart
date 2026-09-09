@@ -88,9 +88,7 @@ Mp3cd _parseMp3cd(List<String> arguments) {
   final modeName = results['mode'] as String;
 
   final converters = converterNames
-      .map(
-        (name) => Profile.values.singleWhere((p) => p.name == name),
-      )
+      .map((name) => Profile.values.singleWhere((p) => p.name == name))
       .toList();
   final mode = Mode.values.singleWhere((m) => m.name == modeName);
 

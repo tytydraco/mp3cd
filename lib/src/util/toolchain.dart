@@ -70,6 +70,14 @@ class Toolchain {
     }).asFuture<dynamic>();
 
     final exitCode = await process.exitCode;
+    if (exitCode != 0) {
+      throw ProcessException(
+        executable,
+        args,
+        stderrBuffer.toString(),
+        exitCode,
+      );
+    }
 
     await Future.wait([stdoutFuture, stderrFuture]);
 
