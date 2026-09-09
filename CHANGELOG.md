@@ -1,3 +1,7 @@
+## 1.0.20
+
+- Do not permit an explicit output file path when multiple converters are specified.
+
 ## 1.0.19
 
 - Throw a `ProcessException` when the toolchain exec fails
