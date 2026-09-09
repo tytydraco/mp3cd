@@ -1,3 +1,9 @@
+## 1.0.19
+
+- Throw a `ProcessException` when the toolchain exec fails
+- Safely handle non-fatal toolchain failures, including cleanup
+- Improve style, syntax, and semantics
+
 ## 1.0.18
 
 - Use duration-based GOP for MPEG4
