@@ -29,7 +29,7 @@ ArgParser _getArgParser() {
     ..addOption(
       'output',
       abbr: 'o',
-      help: 'Output file. Automatic if null.',
+      help: 'Output file. Uses the default profile suffix if null.',
     )
     ..addMultiOption(
       'converters',
@@ -86,6 +86,13 @@ Mp3cd _parseMp3cd(List<String> arguments) {
   final output = results['output'] as String?;
   final converterNames = results['converters'] as List<String>;
   final modeName = results['mode'] as String;
+
+  if (converterNames.length > 1 && output != null) {
+    stderr.writeln(
+      'Explicit output path is incompatible with multiple converters.',
+    );
+    exit(1);
+  }
 
   final converters = converterNames
       .map((name) => Profile.values.singleWhere((p) => p.name == name))
