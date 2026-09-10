@@ -1,3 +1,8 @@
+## 1.0.21
+
+- Add `Dockerfile` to repository
+- Use `magick` instead of legacy `convert`
+
 ## 1.0.20
 
 - Do not permit an explicit output file path when multiple converters are specified.
