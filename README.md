@@ -66,3 +66,21 @@ Ensure these dependencies are available through your environment:
 
 - `mp3cd -i myvideo.mp4 -c uid0001,uid0004 -m video`
 - `mp3cd -i myimage.png -c uid0018 -m image -o output.jpg`
+
+# Docker
+
+An included `Dockerfile` will provide all necessary dependencies.
+
+1. Build the image: `docker build -t mp3cd .`
+2. Enter an interactive shell: `docker run --rm -it mp3cd`
+
+You may also connect a local directory to operate on host files:
+
+`docker run --rm -it -v "$PWD:/root/working" mp3cd`
+
+The shared volume is accessible from `/root/working`.
+
+You may also call `mp3cd` without entering an interactive shell:
+
+`docker run --rm -it -v "$PWD:/root/working" mp3cd mp3cd -i /root/working/myvideo.mp4 -c uid0001 -m video`
+
