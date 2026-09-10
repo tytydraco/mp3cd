@@ -10,7 +10,7 @@ conversion. [List of profiles are available through this spreadsheet](https://gi
 
 # Binary paths
 
-Binaries are assumed to be in your `PATH`, but can be overridden on a library-level. These are the defaults:
+Binaries are assumed to be in your `PATH`, but can be overridden. These are the defaults:
 
 ```
 /// Binary path for FFmpeg.
@@ -22,8 +22,8 @@ String binPathFfprobe = 'ffprobe';
 /// Binary path for FFmpeg with YP3 x264 patch.
 String binPathFfmpegYp3Patch = 'ffmpeg-yp3-patch';
 
-/// Binary path for Image Magick convert.
-String binPathImageMagick = 'convert';
+/// Binary path for Image Magick.
+String binPathImageMagick = 'magick';
 
 /// Binary path for ebook-convert.
 String binPathEbookConvert = 'ebook-convert';
@@ -53,13 +53,27 @@ Ensure these dependencies are available through your environment:
 # Usage
 
 ```
--h, --[no-]help            Show usage.
--i, --input (mandatory)    Input file.
--o, --output               Output file. Automatic if null.
--c, --converters           Converters to apply.
-                           [uid0001, uid0002, uid0003, uid0004, uid0005, uid0007, uid0008, uid0009, uid0010, uid0011, uid0013, uid0014, uid0016, uid0017, uid0018, uid0019]
--m, --mode (mandatory)     Mode of operation.
-                           [audio, image, text, video]
+-h, --[no-]help               Show usage.
+-i, --input (mandatory)       Input file.
+-o, --output                  Output file. Uses the default profile suffix if null.
+-c, --converters              Converters to apply.
+                              [uid0001, uid0002, uid0003, uid0004, uid0005, uid0007, uid0008, uid0009, uid0010, uid0011, uid0013, uid0014, uid0016, uid0017, uid0018, uid0019]
+-m, --mode (mandatory)        Mode of operation.
+                              [audio, image, text, video]
+
+Toolchain
+    --bin-ffmpeg              Binary path for FFmpeg.
+                              (defaults to "ffmpeg")
+    --bin-ffprobe             Binary path for FFprobe.
+                              (defaults to "ffprobe")
+    --bin-ffmpeg-yp3-patch    Binary path for FFmpeg with YP3 x264 patch.
+                              (defaults to "ffmpeg-yp3-patch")
+    --bin-image-magick        Binary path for Image Magick.
+                              (defaults to "magick")
+    --bin-ebook-convert       Binary path for ebook-convert.
+                              (defaults to "ebook-convert")
+    --bin-mp4box              Binary path for MP4Box.
+                              (defaults to "MP4Box")
 ```
 
 # Examples

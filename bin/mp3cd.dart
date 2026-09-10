@@ -62,7 +62,7 @@ ArgParser _getArgParser() {
     )
     ..addOption(
       'bin-image-magick',
-      help: 'Binary path for Image Magick convert.',
+      help: 'Binary path for Image Magick.',
       defaultsTo: Toolchain.defaultBinPathImageMagick,
     )
     ..addOption(

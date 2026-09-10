@@ -22,8 +22,8 @@ class Toolchain {
   /// Default binary path for FFmpeg with YP3 x264 patch.
   static const defaultBinPathFfmpegYp3Patch = 'ffmpeg-yp3-patch';
 
-  /// Default binary path for Image Magick convert.
-  static const defaultBinPathImageMagick = 'convert';
+  /// Default binary path for Image Magick.
+  static const defaultBinPathImageMagick = 'magick';
 
   /// Default binary path for ebook-convert.
   static const defaultBinPathEbookConvert = 'ebook-convert';
@@ -40,7 +40,7 @@ class Toolchain {
   /// Binary path for FFmpeg with YP3 x264 patch.
   final String binPathFfmpegYp3Patch;
 
-  /// Binary path for Image Magick convert.
+  /// Binary path for Image Magick.
   final String binPathImageMagick;
 
   /// Binary path for ebook-convert.
@@ -99,7 +99,7 @@ class Toolchain {
   Future<ProcessResult> ffmpegYp3Patch(List<String> args) =>
       run(binPathFfmpegYp3Patch, args);
 
-  /// Image Magick convert.
+  /// Image Magick.
   Future<ProcessResult> imageMagick(List<String> args) =>
       run(binPathImageMagick, args);
 
