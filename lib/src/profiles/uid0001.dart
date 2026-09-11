@@ -98,7 +98,7 @@ class Uid0001 extends Converter {
     argBuilder
       ..pair('-f', 'avi')
       ..pair('-c:v', 'libx264')
-      ..pair('-x264-params', 'ipratio=2:psy=0:me=tesa:subme=11:trellis=2')
+      ..pair('-x264-params', 'ipratio=2:me=tesa')
       ..pair('-profile:v', 'baseline')
       ..pair(
         '-filter:v',
