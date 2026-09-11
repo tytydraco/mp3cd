@@ -1,3 +1,7 @@
+## 1.0.22
+
+- Disable unimportant trellis and subme tuning for SL6806 for encode speed
+
 ## 1.0.21
 
 - Add `Dockerfile` to repository
